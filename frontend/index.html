@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FridgeChef — Coding Jam Track 04</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧊</text></svg>">
+</head>
+<body class="theme-grandma">
+    <!-- Ambient Backdrop Glows -->
+    <div class="ambient-glow bg-blob-1"></div>
+    <div class="ambient-glow bg-blob-2"></div>
+
+    <header class="app-header">
+        <div class="container flex justify-between items-center h-20">
+            <div class="logo-area">
+                <svg class="gdg-logo" width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <rect x="3" y="10" width="4" height="12" rx="2" fill="#4285F4" class="origin-center animate-bar1"></rect>
+                    <rect x="10" y="6" width="4" height="20" rx="2" fill="#EA4335" class="origin-center animate-bar2"></rect>
+                    <rect x="17" y="9" width="4" height="14" rx="2" fill="#FBBC04" class="origin-center animate-bar3"></rect>
+                    <rect x="24" y="11" width="4" height="10" rx="2" fill="#34A853" class="origin-center animate-bar4"></rect>
+                </svg>
+                <div class="logo-text">
+                    <div class="logo-title">GDG Coding Jams</div>
+                    <div class="logo-subtitle">Build with AI. Together.</div>
+                </div>
+            </div>
+            <div class="header-track">
+                <span class="track-badge">Track 04</span>
+                <span class="track-name">FridgeChef</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <div class="container max-w-4xl">
+            <!-- App Card (Glassmorphism container) -->
+            <div class="app-card">
+                
+                <!-- STATE 1: INPUT STATE -->
+                <section id="state-input" class="state-view active">
+                    <div class="intro-section">
+                        <div class="fridge-icon">🧊</div>
+                        <h1 class="display-heading">What's in your fridge?</h1>
+                        <p class="subtitle">Drop in your ingredients, pick your chef, and let AI cook up one perfect recipe tailored just for you.</p>
+                    </div>
+
+                    <form id="recipe-form" onsubmit="event.preventDefault();">
+                        <!-- Ingredient Input Section -->
+                        <div class="input-group">
+                            <label for="ingredient-input" class="input-label">Your Ingredients</label>
+                            <div class="tag-input-container" id="tag-container">
+                                <input type="text" id="ingredient-input" placeholder="Type ingredient and press Enter or comma..." autocomplete="off">
+                            </div>
+                            <p class="input-help">Press Enter or add a comma to lock in an ingredient. Minimum 1 required.</p>
+                        </div>
+
+                        <!-- Quick-Add Recommendations -->
+                        <div class="quick-add-section">
+                            <span class="quick-add-label">Quick add:</span>
+                            <div class="quick-add-chips">
+                                <button type="button" class="chip" data-val="Tomato">🍅 Tomato</button>
+                                <button type="button" class="chip" data-val="Cheese">🧀 Cheese</button>
+                                <button type="button" class="chip" data-val="Eggs">🥚 Eggs</button>
+                                <button type="button" class="chip" data-val="Bread">🍞 Bread</button>
+                                <button type="button" class="chip" data-val="Avocado">🥑 Avocado</button>
+                                <button type="button" class="chip" data-val="Onion">🧅 Onion</button>
+                                <button type="button" class="chip" data-val="Chicken">🍗 Chicken</button>
+                                <button type="button" class="chip" data-val="Garlic">🧄 Garlic</button>
+                            </div>
+                        </div>
+
+                        <!-- Chef Personality Selector -->
+                        <div class="input-group">
+                            <label class="input-label">Select Your Chef</label>
+                            <div class="chef-grid">
+                                <!-- Grandma -->
+                                <label class="chef-card selected" for="chef-grandma">
+                                    <input type="radio" name="chef_personality" id="chef-grandma" value="grandma" checked>
+                                    <div class="chef-avatar">👵🏼</div>
+                                    <div class="chef-info">
+                                        <h3 class="chef-name">Grandma Rosie</h3>
+                                        <p class="chef-desc">Warm, comforting, home-style meals with a sprinkle of love.</p>
+                                    </div>
+                                </label>
+                                <!-- Bistro -->
+                                <label class="chef-card" for="chef-bistro">
+                                    <input type="radio" name="chef_personality" id="chef-bistro" value="bistro">
+                                    <div class="chef-avatar">👨🏻‍🍳</div>
+                                    <div class="chef-info">
+                                        <h3 class="chef-name">Chef Leo (Bistro)</h3>
+                                        <p class="chef-desc">Fast, street-smart, zero-waste midnight masterpieces.</p>
+                                    </div>
+                                </label>
+                                <!-- Gourmet -->
+                                <label class="chef-card" for="chef-gourmet">
+                                    <input type="radio" name="chef_personality" id="chef-gourmet" value="gourmet">
+                                    <div class="chef-avatar">👩🏼‍🎨</div>
+                                    <div class="chef-info">
+                                        <h3 class="chef-name">Penelope (Gourmet)</h3>
+                                        <p class="chef-desc">Sophisticated, fine-dining, artistic plating and flavor balances.</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="action-section">
+                            <button type="submit" id="btn-generate" class="btn btn-primary w-full" disabled>
+                                <span>Create My Recipe</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- STATE 2: LOADING STATE -->
+                <section id="state-loading" class="state-view">
+                    <div class="loading-container">
+                        <!-- Custom Cooker Lottie-like CSS Animation -->
+                        <div class="cooking-animation">
+                            <div class="pan-handle"></div>
+                            <div class="pan-body">
+                                <div class="steam-container">
+                                    <div class="steam steam-1"></div>
+                                    <div class="steam steam-2"></div>
+                                    <div class="steam steam-3"></div>
+                                </div>
+                                <div class="pan-contents">
+                                    <div class="ingredient-bubble b-1">🍅</div>
+                                    <div class="ingredient-bubble b-2">🥚</div>
+                                    <div class="ingredient-bubble b-3">🧀</div>
+                                </div>
+                            </div>
+                            <div class="pan-shadow"></div>
+                        </div>
+                        
+                        <h2 class="loading-title">Cooking up ideas...</h2>
+                        <p class="loading-message" id="loading-txt">Consulting with the chef...</p>
+                        
+                        <div class="loading-progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STATE 3: RECIPE VIEW STATE -->
+                <section id="state-recipe" class="state-view">
+                    <!-- Top header with back button -->
+                    <div class="recipe-nav">
+                        <button id="btn-back" class="btn-text">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                            <span>Back to Fridge</span>
+                        </button>
+                        <div class="recipe-author-badge" id="recipe-chef-badge">🧑🏼‍🍳 Rosie's Specialty</div>
+                    </div>
+
+                    <!-- Split Panel Recipe Card -->
+                    <div class="recipe-grid">
+                        
+                        <!-- Side A: Visuals & Meta -->
+                        <div class="recipe-visuals">
+                            <div class="recipe-image-wrapper">
+                                <img id="recipe-image" src="" alt="AI generated food photo" class="recipe-img">
+                                <div class="recipe-image-overlay"></div>
+                            </div>
+                            
+                            <div class="recipe-meta-cards">
+                                <div class="meta-card">
+                                    <span class="meta-label">🕒 Prep Time</span>
+                                    <span class="meta-value" id="recipe-prep">15 mins</span>
+                                </div>
+                                <div class="meta-card">
+                                    <span class="meta-label">🍳 Difficulty</span>
+                                    <span class="meta-value" id="recipe-difficulty">Easy</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Side B: Content -->
+                        <div class="recipe-content">
+                            <h2 class="recipe-title" id="recipe-title">Gourmet Garden Scramble</h2>
+                            <p class="recipe-desc" id="recipe-desc">A wonderful, rustic breakfast made from sweet stewed tomatoes and freshly whisked eggs. Just like what we enjoyed on Sunday mornings.</p>
+                            
+                            <!-- Interactive Checkable Ingredients -->
+                            <div class="recipe-section">
+                                <h3 class="section-title">Ingredients Needed</h3>
+                                <p class="section-subtitle">Check items off as you gather them from your kitchen:</p>
+                                <ul class="ingredients-list" id="recipe-ingredients">
+                                    <li>
+                                        <label class="ingredient-item">
+                                            <input type="checkbox">
+                                            <span>3 fresh tomatoes, chopped</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Cooking steps -->
+                            <div class="recipe-section">
+                                <h3 class="section-title">Preparation Steps</h3>
+                                <ol class="steps-list" id="recipe-steps">
+                                    <li>Melt butter in a medium skillet over medium heat.</li>
+                                    <li>Add chopped tomatoes and saute until juices run sweet.</li>
+                                    <li>Whisk eggs and gently fold in, top with melted cheese.</li>
+                                </ol>
+                            </div>
+
+                            <!-- Chef Profile / Signature Tip Box -->
+                            <div class="chef-tip-box" id="chef-tip-box">
+                                <div class="chef-tip-header">
+                                    <div class="chef-tip-avatar" id="chef-tip-avatar">👵🏼</div>
+                                    <div>
+                                        <h4 class="chef-tip-by" id="chef-tip-name">Rosie's Kitchen Secret</h4>
+                                        <p class="chef-tip-sub">Culinary Sage Advice</p>
+                                    </div>
+                                </div>
+                                <p class="chef-tip-content" id="recipe-chef-note">Keep a lid on the skillet for a minute to get the cheese perfectly melty, sweetheart!</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+            
+            <!-- Footer -->
+            <footer class="app-footer">
+                <p>Designed with ❤️ for GDG Coding Jams. Powered by Google Gemini &amp; Imagen 3.</p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- UI State Control and Dynamic Behaviors -->
+    <script src="app.js"></script>
+</body>
+</html>
